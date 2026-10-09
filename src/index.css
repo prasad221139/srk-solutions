@@ -78,6 +78,12 @@ h3 {
   gap: 36px;
 }
 
+.support-information {
+  display: grid;
+  min-width: 0;
+  gap: 30px;
+}
+
 @media (max-width: 760px) {
   .page-content {
     width: min(100% - 32px, 1240px);
@@ -88,5 +94,9 @@ h3 {
   .support-sections {
     grid-template-columns: minmax(0, 1fr);
     gap: 28px;
+  }
+
+  .support-information {
+    gap: 26px;
   }
 }
