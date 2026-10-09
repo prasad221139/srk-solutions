@@ -74,6 +74,14 @@
   font-weight: 700;
 }
 
+.client-logo {
+  display: block;
+  width: min(86px, 38%);
+  height: 42px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
 .client-tone-0 {
   --client-accent: #1769aa;
 }

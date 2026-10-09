@@ -5,14 +5,24 @@ const suppliedClients = [
   "Hetero Labs Ltd",
   "Honour Labs Ltd",
   "Dasami Labs",
-  "Hiydid Labs",
+  "Hindys Labs",
   "Admiron Life Sciences",
-  "Vannash Life Sciences",
+  "Vannsh Life Sciences",
 ];
+
+const clientLogos = {
+  "Hetero Drug Ltd": "/images/heterologo.png",
+  "Hetero Labs Ltd": "/images/heterologo.png",
+  "Honour Labs Ltd": "/images/honourlogo.jpg",
+  "Dasami Labs": "/images/dasamilogo.jpg",
+  "Admiron Life Sciences": "/images/admironlogo.jpg",
+  "Vannsh Life Sciences": "/images/vannshlogo.jpg",
+};
 
 const clients = suppliedClients.map((name, index) => ({
   id: String(index + 1).padStart(2, "0"),
   name,
+  logo: clientLogos[name],
   initials: name
     .split(/\s+/)
     .map((word) => word[0])
@@ -40,11 +50,17 @@ const Clients = () => {
             key={client.id}
             role="listitem"
           >
-            <span className="client-mark" aria-hidden="true">
-              {client.initials}
-            </span>
+            {client.logo ? (
+              <img className="client-logo" src={client.logo} alt={`${client.name} logo`} />
+            ) : (
+              <span className="client-mark" aria-hidden="true">
+                {client.initials}
+              </span>
+            )}
             <span className="client-name">{client.name}</span>
-            <span className="client-index" aria-hidden="true">{client.id}</span>
+            <span className="client-index" aria-hidden="true">
+              {client.id}
+            </span>
           </div>
         ))}
       </div>
