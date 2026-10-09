@@ -1,0 +1,89 @@
+.site-footer {
+	margin-top: 0;
+	background: var(--forest);
+	color: var(--white);
+}
+
+.site-footer-inner {
+	display: grid;
+	width: min(100% - 48px, 1240px);
+	margin: 0 auto;
+	padding: 28px 0;
+	grid-template-columns: minmax(0, 1fr) auto minmax(220px, 0.9fr);
+	align-items: start;
+	gap: 28px;
+}
+
+.footer-brand a {
+	color: var(--white);
+	font-family: "Space Grotesk", sans-serif;
+	font-size: 1.2rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.footer-brand p {
+	margin-top: 8px;
+	color: #c8d9ed;
+	font-size: 0.84rem;
+}
+
+.footer-navigation,
+.footer-contact {
+	display: grid;
+	min-width: 0;
+	gap: 10px;
+}
+
+.footer-navigation a,
+.footer-contact a,
+.footer-contact span {
+	color: #e4eef9;
+	font-size: 0.88rem;
+	line-height: 1.5;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.footer-navigation a:hover,
+.footer-navigation a:focus-visible,
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+	color: var(--lime);
+	text-decoration: underline;
+}
+
+.footer-contact {
+	font-style: normal;
+}
+
+.footer-bottom {
+	padding: 14px 20px;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	color: #c8d9ed;
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+@media (max-width: 760px) {
+	.site-footer-inner {
+		width: min(100% - 32px, 1240px);
+		padding: 24px 0;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 26px;
+	}
+
+	.footer-contact {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 420px) {
+	.site-footer-inner {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.footer-contact {
+		grid-column: auto;
+	}
+}

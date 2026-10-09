@@ -1,21 +1,21 @@
 import "./Contact.css";
+import company from "../../helpers/companyData";
 
 const Contact = () => {
   return (
-    <section className="contact">
-      <h2>Contact Us</h2>
-
-      <h1>9000704002</h1>
-
-      <p>srksolutions2023@gmail.com</p>
+    <section className="contact" id="contact">
+      <p className="contact-eyebrow">Talk to our team</p>
+      <h2>Start a conversation</h2>
+      <a className="contact-phone" href={`tel:${company.phone}`}>
+        {company.phone}
+      </a>
+      <a className="contact-email" href={`mailto:${company.email}`}>
+        {company.email}
+      </a>
 
       <div className="address">
         <h3>Our Address</h3>
-
-        <p>
-          D.No.8-44, Varalakshmi Devi Temple Street, Seethanagaram, East
-          Godavari, AP - 533287
-        </p>
+        <p>{company.address}</p>
       </div>
     </section>
   );
