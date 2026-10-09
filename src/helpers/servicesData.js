@@ -91,6 +91,28 @@ const services = [
       "Review layout requirements for the intended room configuration.",
     ],
   },
+  {
+    id: 10,
+    title: "AHU & Ducting Supply and Service",
+    desc: "Supply, service, and maintenance support for air handling units and ducting systems.",
+    image: "/images/service10.jpg",
+    details: [
+      "AHU and ducting supply for cleanroom and facility requirements.",
+      "Service and maintenance support for installed systems.",
+      "Coordination based on project specifications and site requirements.",
+    ],
+  },
+  {
+    id: 11,
+    title: "ACP Sheet Supply & Service",
+    desc: "ACP sheet supply and service support for cleanroom and facility applications.",
+    image: "/images/service11.jpg",
+    details: [
+      "ACP sheet supply based on approved project specifications.",
+      "Service support for ACP sheet requirements.",
+      "Coordination based on project and site requirements.",
+    ],
+  },
 ];
 
 export default services;

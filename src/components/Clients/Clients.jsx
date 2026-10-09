@@ -19,8 +19,7 @@ const clientLogos = {
   "Vannsh Life Sciences": "/images/vannshlogo.jpg",
 };
 
-const clients = suppliedClients.map((name, index) => ({
-  id: String(index + 1).padStart(2, "0"),
+const clients = suppliedClients.map((name) => ({
   name,
   logo: clientLogos[name],
   initials: name
@@ -39,28 +38,34 @@ const Clients = () => {
           <p className="clients-eyebrow">Our network</p>
           <h2 id="clients-title">Client Partners</h2>
         </div>
-        <p className="clients-caption">
-          Building reliable environments for pharma and life sciences.
-        </p>
+        <div className="clients-heading-action">
+          <p className="clients-caption">
+            Meet some of the organizations we work with.
+          </p>
+          <a className="clients-cta" href="#contact">
+            Talk about your project <span aria-hidden="true">-&gt;</span>
+          </a>
+        </div>
       </div>
       <div className="client-grid" role="list">
         {clients.map((client, index) => (
           <div
             className={`client-tile client-tone-${index % 4}`}
-            key={client.id}
+            key={client.name}
             role="listitem"
           >
             {client.logo ? (
-              <img className="client-logo" src={client.logo} alt={`${client.name} logo`} />
+              <img
+                className={`client-logo${client.name === "Dasami Labs" ? " client-logo-dasami" : ""}`}
+                src={client.logo}
+                alt={`${client.name} logo`}
+              />
             ) : (
               <span className="client-mark" aria-hidden="true">
                 {client.initials}
               </span>
             )}
             <span className="client-name">{client.name}</span>
-            <span className="client-index" aria-hidden="true">
-              {client.id}
-            </span>
           </div>
         ))}
       </div>
