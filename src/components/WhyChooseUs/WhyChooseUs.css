@@ -1,0 +1,23 @@
+.why {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.why h2 {
+    color: #004ea8;
+    margin-bottom: 20px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.why-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+}

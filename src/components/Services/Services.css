@@ -1,0 +1,52 @@
+.services {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.services-header {
+    background: #004ea8;
+    color: white;
+    padding: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-number {
+    width: 50px;
+    height: 50px;
+    background: #0058b6;
+    color: white;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.service-content {
+    flex: 1;
+}
+
+.service-card img {
+    width: 140px;
+    border-radius: 10px;
+}
+
+.bottom-text {
+    background: #004ea8;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+}
