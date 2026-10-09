@@ -1,13 +1,21 @@
 import "./WhyChooseUs.css";
+import {
+  FiAward,
+  FiClock,
+  FiCrosshair,
+  FiHeart,
+  FiShield,
+  FiUsers,
+} from "react-icons/fi";
 
 const WhyChooseUs = () => {
   const items = [
-    "Quality Focused Services",
-    "Experienced Team",
-    "Timely Support",
-    "Regulatory Compliance",
-    "Customer Satisfaction",
-    "Advanced Instruments",
+    { label: "Quality Focused Services", icon: FiAward },
+    { label: "Experienced Team", icon: FiUsers },
+    { label: "Timely Support", icon: FiClock },
+    { label: "Regulatory Compliance", icon: FiShield },
+    { label: "Customer Satisfaction", icon: FiHeart },
+    { label: "Advanced Instruments", icon: FiCrosshair },
   ];
 
   return (
@@ -16,10 +24,12 @@ const WhyChooseUs = () => {
       <h2>Why Choose SRK Solutions?</h2>
 
       <div className="why-grid">
-        {items.map((item, index) => (
-          <div key={item} className="why-item">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{item}</h3>
+        {items.map(({ label, icon: Icon }) => (
+          <div key={label} className="why-item">
+            <span className="why-icon" aria-hidden="true">
+              <Icon />
+            </span>
+            <h3>{label}</h3>
           </div>
         ))}
       </div>
