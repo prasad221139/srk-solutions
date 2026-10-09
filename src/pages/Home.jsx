@@ -4,6 +4,7 @@ import WhyChooseUs from "../components/WhyChooseUs/WhyChooseUs";
 import Contact from "../components/Contact/Contact";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Clients from "../components/Clients/Clients";
 
 const Home = () => {
   return (
@@ -13,9 +14,12 @@ const Home = () => {
       <main className="page-content">
         <Services />
         <div className="support-sections">
-          <WhyChooseUs />
+          <div className="support-information">
+            <WhyChooseUs />
+          </div>
           <Contact />
         </div>
+        <Clients />
       </main>
       <Footer />
     </>
