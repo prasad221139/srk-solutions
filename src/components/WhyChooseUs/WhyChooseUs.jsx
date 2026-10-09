@@ -11,13 +11,15 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="why">
+    <section className="why" id="why-us">
+      <p className="why-eyebrow">Our approach</p>
       <h2>Why Choose SRK Solutions?</h2>
 
       <div className="why-grid">
-        {items.map((item) => (
-          <div key={item} className="why-card">
-            {item}
+        {items.map((item, index) => (
+          <div key={item} className="why-item">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item}</h3>
           </div>
         ))}
       </div>

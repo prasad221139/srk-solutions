@@ -4,12 +4,20 @@ import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   return (
-    <section className="services">
-      <div className="services-header">Our Services</div>
+    <section className="services" id="services">
+      <div className="services-header">
+        <div className="services-title">
+          <p className="services-eyebrow">What we do</p>
+          <h2>Our Services</h2>
+        </div>
+        <p>Testing and validation for controlled environments.</p>
+      </div>
 
-      {services.map((service) => (
-        <ServiceCard key={service.id} service={service} />
-      ))}
+      <div className="service-grid">
+        {services.map((service) => (
+          <ServiceCard key={service.id} service={service} />
+        ))}
+      </div>
 
       <div className="bottom-text">Your Compliance Our Priority</div>
     </section>

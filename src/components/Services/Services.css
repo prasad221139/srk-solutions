@@ -1,52 +1,466 @@
 .services {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
+    display: grid;
+    min-width: 0;
+    gap: 22px;
+    scroll-margin-top: 110px;
 }
 
 .services-header {
-    background: #004ea8;
-    color: white;
-    padding: 20px;
-    font-size: 2rem;
-    font-weight: bold;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.65fr);
+    align-items: end;
+    gap: 24px;
+    color: var(--ink);
+}
+
+.services-eyebrow {
+    margin-bottom: 10px;
+    color: var(--teal);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.services-header h2 {
+    font-size: 2.15rem;
+    line-height: 1.1;
+}
+
+.services-header > p:last-child {
+    max-width: 330px;
+    justify-self: end;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.service-grid {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .service-card {
     display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
+    min-width: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 6px;
 }
 
-.service-number {
-    width: 50px;
-    height: 50px;
-    background: #0058b6;
-    color: white;
-    border-radius: 50%;
+.service-image,
+.service-image-placeholder {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 8.5;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.service-image {
+    object-fit: cover;
+}
 
-    font-weight: bold;
+.service-image-placeholder {
+    display: grid;
+    place-items: center;
+    background-color: #e1ecf8;
+    background-image:
+        linear-gradient(135deg, transparent 49.7%, rgba(23, 105, 170, 0.16) 50%, transparent 50.3%),
+        linear-gradient(45deg, transparent 49.7%, rgba(23, 105, 170, 0.12) 50%, transparent 50.3%);
+    background-size: 34px 34px;
+    color: #356697;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.6rem;
+    font-weight: 600;
 }
 
 .service-content {
-    flex: 1;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    height: 100%;
+    padding: 16px 18px 18px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.service-card img {
-    width: 140px;
-    border-radius: 10px;
+.service-number {
+    color: var(--teal);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.service-content h3 {
+    margin-top: 7px;
+    color: var(--ink);
+    font-size: 1.16rem;
+    line-height: 1.32;
+    overflow-wrap: anywhere;
+}
+
+.service-content p {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.service-detail-trigger {
+    display: flex;
+    width: 100%;
+    margin-top: auto;
+    min-height: 48px;
+    margin-top: 14px;
+    padding: 0 12px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #cbd9e7;
+    border-left: 3px solid var(--teal);
+    border-radius: 5px;
+    background: #f2f6fa;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: left;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.service-detail-trigger span {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 3px;
+    background: var(--forest);
+    color: #fff;
+    font-size: 1rem;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.service-detail-trigger:hover,
+.service-detail-trigger:focus-visible {
+    border-color: var(--forest);
+    background: var(--forest);
+    color: #fff;
+}
+
+.service-detail-trigger:hover span,
+.service-detail-trigger:focus-visible span {
+    background: #efbd59;
+    color: var(--ink);
+    transform: translateX(3px);
+}
+
+.service-detail-trigger:focus-visible,
+.service-dialog-close:focus-visible,
+.service-dialog-action:focus-visible,
+.header-call:focus-visible,
+.hero-link:focus-visible {
+    outline: 3px solid #efbd59;
+    outline-offset: 3px;
+}
+
+.service-dialog {
+    position: fixed;
+    inset: 0;
+    width: min(760px, calc(100vw - 24px));
+    max-width: none;
+    max-height: min(88vh, 820px);
+    max-height: min(88dvh, 820px);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    border: 0;
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: 0 28px 90px rgba(12, 31, 49, 0.3);
+}
+
+.service-dialog::backdrop {
+    background: rgba(16, 34, 52, 0.68);
+    backdrop-filter: blur(4px);
+}
+
+.service-dialog-shell {
+    padding: 30px;
+}
+
+.service-dialog-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.service-dialog-heading > span {
+    color: var(--teal);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.service-dialog-close {
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid #d7e0e9;
+    border-radius: 5px;
+    background: #f2f6fa;
+    color: #314c68;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.service-dialog-close:hover {
+    border-color: var(--forest);
+    background: var(--forest);
+    color: #fff;
+}
+
+.service-dialog-shell > h2 {
+    margin-top: 20px;
+    font-size: 2rem;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+
+.service-dialog-body {
+    display: grid;
+    margin-top: 22px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+    gap: 24px;
+}
+
+.service-dialog-body > img,
+.service-dialog-image-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.service-dialog-image-placeholder {
+    display: grid;
+    place-items: center;
+    background: #e1ecf8;
+    color: #356697;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.5rem;
+}
+
+.service-dialog-copy > p,
+.service-dialog-copy li {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
+.service-dialog-copy h3 {
+    margin-top: 18px;
+    font-size: 1rem;
+}
+
+.service-dialog-copy ul {
+    display: grid;
+    margin: 10px 0 0;
+    padding-left: 20px;
+    gap: 8px;
+}
+
+.service-dialog-actions {
+    display: grid;
+    margin-top: 26px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.service-dialog-action {
+    display: flex;
+    min-width: 0;
+    min-height: 76px;
+    padding: 13px 15px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.service-action-copy {
+    display: grid;
+    min-width: 0;
+    gap: 4px;
+}
+
+.service-action-label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.service-action-copy strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.service-action-arrow {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 3px;
+    font-size: 1rem;
+    transition: transform 160ms ease;
+}
+
+.service-dialog-call {
+    border: 1px solid #244f7d;
+    border-left: 4px solid #efbd59;
+    background: var(--forest);
+    color: #fff;
+}
+
+.service-dialog-call .service-action-label {
+    color: #f4c86f;
+}
+
+.service-dialog-call .service-action-arrow {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.service-dialog-book {
+    border: 1px solid #e5ae43;
+    background: #efbd59;
+    color: #24364a;
+}
+
+.service-dialog-book .service-action-label {
+    color: #69450b;
+}
+
+.service-dialog-book .service-action-arrow {
+    background: rgba(23, 59, 105, 0.12);
+}
+
+.service-dialog-book:hover,
+.service-dialog-book:focus-visible {
+    border-color: #d39a2e;
+    box-shadow: 0 7px 18px rgba(144, 98, 22, 0.2);
+    background: #e6ad3f;
+}
+
+.service-dialog-book:hover span,
+.service-dialog-book:focus-visible span {
+    transform: translateX(3px);
+}
+
+.service-dialog-call:hover,
+.service-dialog-call:focus-visible {
+    border-color: #285c8b;
+    box-shadow: 0 7px 18px rgba(23, 59, 105, 0.2);
+    background: #214f7d;
+}
+
+.service-dialog-action:hover .service-action-arrow,
+.service-dialog-action:focus-visible .service-action-arrow {
+    transform: translateX(3px);
 }
 
 .bottom-text {
-    background: #004ea8;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 1.2rem;
+    display: flex;
+    padding: 15px 18px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--forest);
+    color: var(--white);
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+}
+
+.bottom-text::after {
+    color: var(--lime);
+    content: "SRK / 2026";
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .services-header {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .services-header h2 {
+        font-size: 1.9rem;
+    }
+
+    .services-header > p:last-child {
+        justify-self: start;
+    }
+
+    .service-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .bottom-text {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+    .service-dialog-shell {
+        padding: clamp(16px, 4vw, 24px);
+    }
+
+    .service-dialog-body {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .service-dialog-body > img,
+    .service-dialog-image-placeholder {
+        max-height: min(34vh, 240px);
+        max-height: min(34dvh, 240px);
+        aspect-ratio: 16 / 9;
+    }
+
+    .service-dialog-actions {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .service-dialog-action {
+        width: 100%;
+        min-height: 68px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-detail-trigger,
+    .service-detail-trigger span,
+    .service-dialog-action,
+    .service-action-arrow {
+        transition: none;
+    }
 }
